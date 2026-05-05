@@ -50,6 +50,9 @@ Frontend → Spring Boot Backend (Docker) → AWS RDS (MariaDB)
 
 ![Dashboard](https://raw.githubusercontent.com/pranavthakare74/myrepo/main/screenshots/home.png)
 
+### 🗄️ Database Storage (MariaDB)
+![Database Storage (MariaDB)](https://raw.githubusercontent.com/pranavthakare74/myrepo/main/screenshots/data.png.png)
+
 ## ⚙️ Backend Configuration
 
 ```properties
