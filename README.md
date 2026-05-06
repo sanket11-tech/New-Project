@@ -1,12 +1,14 @@
-# 🚀 CloudBlitz Student Registration System
+# 🎓 Student Registration System (Spring Boot + Docker)
 
-A full-stack CRUD-based web application designed to manage student records efficiently. The application is built using Spring Boot, integrated with a cloud-hosted MariaDB database (AWS RDS), and fully containerized using Docker for consistent and portable deployment.
+This project is a simple **student management system** that I built to practice backend development, database integration, and containerization. It allows basic CRUD operations like adding, viewing, updating, and deleting student records.
+
+The backend is developed using Spring Boot, connected to a cloud database hosted on AWS RDS (MariaDB), and containerized using Docker.
 
 ---
 
 ## 📌 Project Overview
 
-The CloudBlitz Student Registration System enables users to perform Create, Read, Update, and Delete operations through a structured backend and responsive user interface. The project focuses on real-world backend development, cloud database integration, and containerized deployment.
+The application provides REST APIs to manage student data. A basic frontend (HTML, CSS, JavaScript) is used to interact with these APIs.
 
 ---
 
@@ -14,53 +16,50 @@ The CloudBlitz Student Registration System enables users to perform Create, Read
 
 Frontend → Spring Boot Backend (Docker) → AWS RDS (MariaDB)
 
-* The frontend handles user interaction
-* The backend exposes REST APIs and processes logic
-* AWS RDS manages persistent data storage
-* Docker ensures consistent execution across environments
-
 ---
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** HTML, CSS, JavaScript
-* **Backend:** Spring Boot (Java)
-* **Database:** MariaDB (AWS RDS)
-* **ORM:** Hibernate (JPA)
-* **Containerization:** Docker
-* **Build Tool:** Maven
-* **Version Control:** Git & GitHub
+* Frontend: HTML, CSS, JavaScript
+* Backend: Spring Boot (Java)
+* Database: MariaDB (AWS RDS)
+* ORM: Hibernate (JPA)
+* Containerization: Docker
+* Build Tool: Maven
 
 ---
 
 ## ✨ Features
 
-* Register new student records
-* View all registered users
-* Update existing records
-* Delete records
+* Add new student records
+* View all students
+* Update student details
+* Delete student records
 * Persistent storage using AWS RDS
-* Fully containerized backend service
+* Dockerized backend
 
 ---
 
-## 📸 Application Screenshots
+## 📸 Screenshots
 
 ### 🏠 Dashboard
 
-![Dashboard](https://raw.githubusercontent.com/pranavthakare74/myrepo/main/screenshots/home.png)
+![Dashboard](https://raw.githubusercontent.com/sanket11-tech/myrepo/main/screenshots/home.png)
 
-### 🗄️ Database Storage (MariaDB)
-![Database Storage (MariaDB)](https://raw.githubusercontent.com/pranavthakare74/myrepo/main/screenshots/data.png.png)
+### 🗄️ Database (MariaDB)
+
+![Database](https://raw.githubusercontent.com/sanket11-tech/myrepo/main/screenshots/data.png.png)
+
+---
 
 ## ⚙️ Backend Configuration
 
-```properties
+```properties id="l2e8sh"
 server.port=8080
 
-spring.datasource.url=jdbc:mariadb://<RDS-ENDPOINT>:3306/student_db?sslMode=trust
-spring.datasource.username=admin
-spring.datasource.password=********
+spring.datasource.url=jdbc:mariadb://<RDS-ENDPOINT>:3306/student_db
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
@@ -68,13 +67,11 @@ spring.jpa.show-sql=true
 
 ---
 
-## 🐳 Docker Implementation
-
-The application is packaged and deployed as a Docker container to ensure consistency across environments.
+## 🐳 Docker Setup
 
 ### 📦 Dockerfile
 
-```dockerfile
+```dockerfile id="kvbbqx"
 FROM openjdk:17-jdk-slim
 
 WORKDIR /app
@@ -88,74 +85,60 @@ ENTRYPOINT ["java","-jar","app.jar"]
 
 ---
 
-### ▶️ Build Docker Image
+### ▶️ Build Image
 
-```bash
-docker build -t cloudblitz-app .
+```bash id="o0r5o0"
+docker build -t student-app .
 ```
 
 ---
 
 ### ▶️ Run Container
 
-```bash
-docker run -d -p 8080:8080 --name cloudblitz-container cloudblitz-app
+```bash id="dnfwxw"
+docker run -d -p 8080:8080 \
+  -e DB_USERNAME=your_username \
+  -e DB_PASSWORD=your_password \
+  --name student-container student-app
 ```
 
 ---
 
-### 🔍 Verify Running Container
+## 🔄 Application Flow
 
-```bash
-docker ps
-```
-
----
-
-## 🚀 Deployment Details
-
-### 🗄️ Database (AWS RDS)
-
-* MariaDB instance hosted on AWS
-* Connected using RDS endpoint
-* Security group configured to allow inbound traffic
-
-### 🐳 Application Deployment
-
-* Spring Boot application packaged as JAR
-* Containerized using Docker
-* Deployed as a running container on port 8080
-* Can be hosted on:
-
-  * Local system
-  * AWS EC2 instance
-  * Any Docker-supported server
-
----
-
-🔄 Application Flow
-1. User submits form data
-2. Request is sent to Spring Boot API
-3. Backend processes and validates input
+1. User submits data from frontend
+2. Request goes to backend API
+3. Backend processes the request
 4. Data is stored in AWS RDS
-5. Updated data is returned and displayed
+5. Response is sent back to frontend
 
-🔍 Challenges Faced
-Establishing connection with AWS RDS
-Debugging data persistence issues
-Ensuring proper API flow
-Containerizing the backend application
+---
 
+## ⚠️ Challenges Faced
 
-🚀 Future Enhancements
-Add authentication system
-Improve UI/UX
-Deploy using reverse proxy (Nginx)
-Implement CI/CD pipeline
-📬 Contact
+* Connecting to AWS RDS
+* Fixing database connection issues
+* Debugging API responses
+* Running Docker container properly
 
-GitHub: https://github.com/pranavthakare74
+---
 
-⭐ Note
+## 🚀 Future Improvements
 
-This project demonstrates practical implementation of backend development, cloud database integration, and containerized deployment using Docker.
+* Add authentication (login system)
+* Improve UI design
+* Use reverse proxy (Nginx)
+* Deploy on AWS EC2
+* Add CI/CD pipeline
+
+---
+
+## 📬 Contact
+
+GitHub: https://github.com/sanket11-tech
+
+---
+
+## ⭐ Note
+
+This project is built for learning purposes to understand backend development, cloud database integration, and Docker deployment.
